@@ -37,7 +37,7 @@ app.post('/ajouter', (req, res) => {
  })
 })
 
-
+// détruit un contenu en particulier
 app.get('/detruire/:id', (req, res) => {
  var id = req.params.id
  console.log(id)
@@ -49,6 +49,7 @@ if (err) return console.log(err)
  })
 })
 
+//permet de trier
 app.get('/trier/:cle/:ordre', (req, res) => {
 	let cle = req.params.cle
 	let ordre = (req.params.ordre == "asc" ? 1 : -1)
@@ -61,7 +62,7 @@ app.get('/trier/:cle/:ordre', (req, res) => {
 	})
 })
 
-
+//modifie un contenu
 app.post('/modifier', (req, res) => {
   
   console.log('util = ' + util.inspect(req.body));
@@ -73,6 +74,8 @@ app.post('/modifier', (req, res) => {
  })
 })
 
+
+// crée nouveau contenu selon certaine données
 app.get('/peupler',function(req,res){
 
 db.collection('adresse').insertMany(peupler(), (err, result) => {
@@ -83,6 +86,7 @@ db.collection('adresse').insertMany(peupler(), (err, result) => {
  })
 })
 
+//vide le contenu
 app.get('/vider', (req, res) => {
 
  	db.collection('adresse').remove({}, (err, resultat) => {
